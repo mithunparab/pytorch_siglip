@@ -1,0 +1,77 @@
+debug: False
+seed: 42
+device: auto
+model_save_path: "best_siglip_model.pth"
+
+image_path: "/kaggle/input/flickr8k/Images"
+
+languages: ['english', 'hindi']
+captions_files:
+  english: '/kaggle/input/flickr8k/captions.txt'
+  hindi: '/kaggle/input/multi-lang/hindi_captions.txt'
+
+training:
+  batch_size: 32
+  epochs: 10
+  use_augmentations: True
+  gradient_clipping: 1.0
+
+  optimizer:
+    type: AdamW
+    lr: 3.0e-5
+    weight_decay: 0.01
+
+  scheduler:
+    lr_start: 3.0e-5
+    lr_max_mult: 1.0
+    lr_min: 1.0e-6
+    lr_ramp_ep: 3
+    lr_sus_ep: 0
+
+model:
+  image_encoder:
+    name: "efficientnet_v2_s"
+    pretrained: True
+
+  text_encoder:
+    preset: "distilbert-base-uncased"
+
+  projection:
+    embedding_dim: 256
+    dropout: 0.1
+
+  siglip:
+    logit_scale_init: 10.0
+    logit_bias_init: -10.0
+
+dataset:
+  image_size: [224, 224]
+  text_sequence_length: 77
+
+  dataloader:
+    num_workers: auto
+    pin_memory: True
+    drop_last_train: True
+
+augmentation:
+  random_apply_p: 0.5
+
+  cutout:
+    min_size: 0.02
+    max_size: 0.15
+
+  color_jitter:
+    brightness: 0.2
+    contrast: 0.2
+    saturation: 0.2
+    hue: 0.1
+
+  random_resized_crop:
+    scale_min: 0.8
+    scale_max: 1.0
+
+  random_horizontal_flip:
+    p: 0.5
+
+  random_rotation:
+    degrees: 10
