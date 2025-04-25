@@ -1,0 +1,39 @@
+debug: False
+seed: 42
+device: auto
+model_save_path: "best_hf_siglip_model.pth"
+
+image_path: "/kaggle/input/flickr8k/Images"
+
+languages: ['english', 'hindi', 'marathi']
+captions_files:
+  english: '/kaggle/input/flickr8k/captions.txt'
+  hindi: '/kaggle/input/multi-lang/hindi_captions.txt'
+  marathi: '/kaggle/input/multi-lang/marathi-captions.txt'
+  
+model_name: "google/siglip-base-patch16-256-multilingual"
+
+training:
+  batch_size: 32
+  epochs: 5
+  gradient_clipping: 1.0
+
+  optimizer:
+    type: AdamW
+    lr: 1.0e-5
+    weight_decay: 0.01
+
+  scheduler:
+    lr_start: 1.0e-5
+    lr_max_mult: 1.0
+    lr_min: 1.0e-6
+    lr_ramp_ep: 1
+    lr_sus_ep: 0
+
+dataset:
+  text_sequence_length: 64
+
+  dataloader:
+    num_workers: auto
+    pin_memory: True
+    drop_last_train: True
