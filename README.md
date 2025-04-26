@@ -10,14 +10,14 @@ This repository contains implementations and experiments for training and fine-t
 ## Dataset
 
 <a href="https://www.kaggle.com/datasets/adityajn105/flickr8k" target="_blank">Flickr 8k Dataset</a> dataset is used for training and evaluation. The dataset consists of images and their corresponding captions in multiple languages. The dataset should be organized as follows:
-
+```
 flickr8k/
 ├── Images/
 │   ├── image1.jpg
 │   ├── image2.jpg
 │   └── ...
 └── captions.txt
-
+```
 For captions translation, we used the <a href="https://github.com/AI4Bharat/IndicTrans2" target="_blank">IndicTrans2</a> model to translate the captions into Hindi, Marathi, and Hinglish.
 
 ---
