@@ -70,7 +70,7 @@ python test.py --config config.yaml --image /path/to/image.jpg --labels "cat" "d
 ```
 
 ---
-![Image of 2 cats](data/2cats.png)
+![Image of 2 cats](../data/2cats.png)
 
 ---
 
