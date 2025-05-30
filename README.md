@@ -20,5 +20,7 @@ flickr8k/
 ```
 For captions translation, we used the <a href="https://github.com/AI4Bharat/IndicTrans2" target="_blank">IndicTrans2</a> model to translate the captions into Hindi, Marathi, and Hinglish.
 
+![Image of 2 cats](data/2cats.png)
+
 ---
 Refer to the individual `README.md` files in each directory for detailed documentation.
